@@ -25,3 +25,5 @@ JavaApplication25/src/javaapplication25/SequenceNumberUsingContinue.java
 TestTwoDimensionalArray/manifest.mf
 *.mf
 TestTwoDimensionalArray/manifest.mf
+/TwoDimensionalArray/nbproject/private/
+/TwoDimensionalArray/build/
