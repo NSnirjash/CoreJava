@@ -22,3 +22,6 @@ JavaApplication25/src/javaapplication25/SequenceNumberUsingContinue.java
 /RangeOfPrimeNumberUsingArray/nbproject/private/
 /RangeOfPrimeNumberUsingArray/build/
 /TestTwoDimensionalArray/nbproject/private/
+TestTwoDimensionalArray/manifest.mf
+*.mf
+TestTwoDimensionalArray/manifest.mf
