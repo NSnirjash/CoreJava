@@ -4,6 +4,8 @@
  */
 package sequencenumberusingcontinue;
 
+import java.util.Scanner;
+
 /**
  *
  * @author Admin
@@ -15,6 +17,18 @@ public class SequenceNumberUsingContinue {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        Scanner s = new Scanner(System.in);
+        System.out.println("Enter start point value");
+        int startPoint = s.nextInt();
+        System.out.println("Enter end point value");
+        int endPoint = s.nextInt();
+        while (startPoint<=endPoint){
+            if(startPoint%3==0 && startPoint%3==0){
+            startPoint++;
+                continue;
+            }
+            System.out.println("Number is: "+startPoint);
+            startPoint++;
     }
     
 }
