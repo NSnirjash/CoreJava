@@ -27,6 +27,7 @@ TestTwoDimensionalArray/manifest.mf
 TestTwoDimensionalArray/manifest.mf
 /TwoDimensionalArray/nbproject/private/
 /TwoDimensionalArray/build/
+<<<<<<< HEAD
 /GradeEvaluationUsingSwitchStatement/nbproject/private/
 /GradeEvaluationUsingSwitchStatement/build/
 /CalculatorUsingIfStatement/nbproject/private/
@@ -39,3 +40,19 @@ TestTwoDimensionalArray/manifest.mf
 /PracticeOOP/build/
 /PracticeOOP2/nbproject/private/
 /PracticeOOP2/build/
+=======
+/TestPrimeNumberUsingClassAndObject/nbproject/private/
+/TestPrimeNumberUsingClassAndObject/build/
+/CalculatorUsingClassAndObject/nbproject/private/
+/CalculatorUsingClassAndObject/build/
+/FactorialAndPrimeNumber/nbproject/private/
+/FactorialAndPrimeNumber/build/
+/ClassTest/nbproject/private/
+/ClassTest/build/
+/ClassTwest2/nbproject/private/
+/ClassTest2/nbproject/private/
+/ClassTest2/build/
+/ClassTest2/dist/
+/ClassTest3/nbproject/private/
+/ClassTest3/build/
+>>>>>>> 6e989ce93c412c2ef2938ca510994dd28f74fae7
