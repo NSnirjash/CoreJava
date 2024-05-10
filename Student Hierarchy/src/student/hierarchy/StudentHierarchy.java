@@ -1,6 +1,7 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
+ * Design a superclass called Student with attributes like name, id, and grade. 
+ * Then create subclasses like Undergraduate and Graduate inheriting from Student. 
+ * Implement methods to calculate GPA or credits for each type of student.
  */
 package student.hierarchy;
 
