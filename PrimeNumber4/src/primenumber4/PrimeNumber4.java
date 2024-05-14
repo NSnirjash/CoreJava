@@ -7,9 +7,9 @@ public class PrimeNumber4 {
 
     public static void main(String[] args) {
         Scanner s = new Scanner(System.in);
-        System.out.println("Enter start number");
+        System.out.println("Enter starting number");
         int n1 = s.nextInt();
-        System.out.println("Enter second number");
+        System.out.println("Enter finishing number");
         int n2 = s.nextInt();
         PrimeNumber pr = new PrimeNumber();
         pr.num1=n1;
