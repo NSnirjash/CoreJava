@@ -27,20 +27,6 @@ TestTwoDimensionalArray/manifest.mf
 TestTwoDimensionalArray/manifest.mf
 /TwoDimensionalArray/nbproject/private/
 /TwoDimensionalArray/build/
-<<<<<<< HEAD
-/GradeEvaluationUsingSwitchStatement/nbproject/private/
-/GradeEvaluationUsingSwitchStatement/build/
-/CalculatorUsingIfStatement/nbproject/private/
-/CalculatorUsingIfStatement/build/
-/TestObjectAndClass/nbproject/private/
-/TestObjectAndClass/build/
-/Calculator/nbproject/private/
-/Calculator/build/
-/PracticeOOP/nbproject/private/
-/PracticeOOP/build/
-/PracticeOOP2/nbproject/private/
-/PracticeOOP2/build/
-=======
 /TestPrimeNumberUsingClassAndObject/nbproject/private/
 /TestPrimeNumberUsingClassAndObject/build/
 /CalculatorUsingClassAndObject/nbproject/private/
@@ -55,18 +41,29 @@ TestTwoDimensionalArray/manifest.mf
 /ClassTest2/dist/
 /ClassTest3/nbproject/private/
 /ClassTest3/build/
->>>>>>> 6e989ce93c412c2ef2938ca510994dd28f74fae7
-/StudentHierarchy/nbproject/private/
-/Student Hierarchy/nbproject/private/
-/Student Hierarchy/build/
-/AnimalHierarchy/nbproject/private/
-/AnimalHierarchy/build/
-/EmployeeHierarchy/nbproject/private/
-/Employee Hierarchy/nbproject/private/
-/Employee Hierarchy/build/
-/ GuessBirthday/nbproject/private/
-/ GuessBirthday/build/
-/JavaApplication36/nbproject/private/
+/PracticeAbstractClass/nbproject/private/
+/PracticeAbstractClass/build/
+/JavaApplication43/nbproject/private/
+/JavaApplication43/build/
+/PrimeNumberCW/nbproject/private/
+/PrimeNumberCW/build/
+/MaxAndMinNumberCW/nbproject/private/
+/MaxAndMinNumberCW/build/
+/FactorialCW/nbproject/private/
+/FactorialCW/build/
+/Array/nbproject/private/
+/Array/build/
+/RandomArrayCW/nbproject/private/
+/RandomArrayCW/build/
+/PrimeNumberEV/target/
+/PrimeNumberEV/nbproject/private/
+/PrimeNumberEV/build/
+/FactorialEV/nbproject/private/
+/FactorialEV/build/
+/MaxAndMinNumberEV/nbproject/private/
+/SumOfPositiveIntegers/nbproject/private/
+/SumOfPositiveIntegers/build/
+/MaxAndMinNumberEV/build/
 /PrimeNumber4/nbproject/private/
 /PrimeNumber4/build/
 /FactorialByRecursion/nbproject/private/

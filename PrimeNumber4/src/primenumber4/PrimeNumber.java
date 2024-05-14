@@ -18,7 +18,9 @@ public class PrimeNumber extends PrimeNumber4 {
                 }
             }
             if (count == 2) {
-                System.out.println(i);
+                System.out.println("prime number: "+i);
+            }else{
+                System.out.println("not prime number: "+i);
             }
             count = 0;
         }
