@@ -66,6 +66,7 @@ TestTwoDimensionalArray/manifest.mf
 /MaxAndMinNumberEV/build/
 /PrimeNumber4/nbproject/private/
 /PrimeNumber4/build/
+<<<<<<< HEAD
 /FactorialByRecursion/nbproject/private/
 /FactorialByRecursion/build/
 /FindMaxMinNumber/nbproject/private/
@@ -79,3 +80,9 @@ TestTwoDimensionalArray/manifest.mf
 /StudentInfo/build/
 /ExceptionHandling/nbproject/private/
 /ExceptionHandling/build/
+=======
+/TestGeneric/nbproject/private/
+/TestBST/nbproject/private/
+/Avidence/nbproject/private/
+/Avidence/build/
+>>>>>>> 100649c69da054d23edc51fcf406ee599cc2c2f4
