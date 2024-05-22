@@ -1,7 +1,6 @@
 
 package exceptionhandling;
 
-import java.io.ObjectStreamConstants;
 import java.util.Scanner;
 
 public class ExHandlingByTryCatch2 {
