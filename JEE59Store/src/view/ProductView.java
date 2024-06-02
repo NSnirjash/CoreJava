@@ -89,10 +89,6 @@ public class ProductView extends javax.swing.JFrame {
         btnStock = new javax.swing.JButton();
         btnReport = new javax.swing.JButton();
         mainView = new javax.swing.JTabbedPane();
-        stock = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
-        report = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
         add = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -112,6 +108,10 @@ public class ProductView extends javax.swing.JFrame {
         btnProductDelete = new javax.swing.JButton();
         btnProductEdit = new javax.swing.JButton();
         btnProductReset = new javax.swing.JButton();
+        stock = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        report = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -128,6 +128,7 @@ public class ProductView extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1000, 800));
+        setPreferredSize(new java.awt.Dimension(1000, 600));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(102, 102, 102));
@@ -183,48 +184,6 @@ public class ProductView extends javax.swing.JFrame {
         jPanel2.add(btnReport, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 180, 40));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 180, 670));
-
-        jLabel4.setText("Stock");
-
-        javax.swing.GroupLayout stockLayout = new javax.swing.GroupLayout(stock);
-        stock.setLayout(stockLayout);
-        stockLayout.setHorizontalGroup(
-            stockLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(stockLayout.createSequentialGroup()
-                .addGap(308, 308, 308)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(234, Short.MAX_VALUE))
-        );
-        stockLayout.setVerticalGroup(
-            stockLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(stockLayout.createSequentialGroup()
-                .addGap(202, 202, 202)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(180, Short.MAX_VALUE))
-        );
-
-        mainView.addTab("Stock", stock);
-
-        jLabel5.setText("Report");
-
-        javax.swing.GroupLayout reportLayout = new javax.swing.GroupLayout(report);
-        report.setLayout(reportLayout);
-        reportLayout.setHorizontalGroup(
-            reportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(reportLayout.createSequentialGroup()
-                .addGap(266, 266, 266)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(416, Short.MAX_VALUE))
-        );
-        reportLayout.setVerticalGroup(
-            reportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(reportLayout.createSequentialGroup()
-                .addGap(208, 208, 208)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(211, Short.MAX_VALUE))
-        );
-
-        mainView.addTab("Report", report);
 
         add.setMinimumSize(new java.awt.Dimension(820, 550));
         add.setPreferredSize(new java.awt.Dimension(820, 550));
@@ -346,6 +305,48 @@ public class ProductView extends javax.swing.JFrame {
         add.add(btnProductReset, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 200, 100, 30));
 
         mainView.addTab("Add", add);
+
+        jLabel4.setText("Stock");
+
+        javax.swing.GroupLayout stockLayout = new javax.swing.GroupLayout(stock);
+        stock.setLayout(stockLayout);
+        stockLayout.setHorizontalGroup(
+            stockLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(stockLayout.createSequentialGroup()
+                .addGap(308, 308, 308)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(234, Short.MAX_VALUE))
+        );
+        stockLayout.setVerticalGroup(
+            stockLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(stockLayout.createSequentialGroup()
+                .addGap(202, 202, 202)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(180, Short.MAX_VALUE))
+        );
+
+        mainView.addTab("Stock", stock);
+
+        jLabel5.setText("Report");
+
+        javax.swing.GroupLayout reportLayout = new javax.swing.GroupLayout(report);
+        report.setLayout(reportLayout);
+        reportLayout.setHorizontalGroup(
+            reportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(reportLayout.createSequentialGroup()
+                .addGap(266, 266, 266)
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(416, Short.MAX_VALUE))
+        );
+        reportLayout.setVerticalGroup(
+            reportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(reportLayout.createSequentialGroup()
+                .addGap(208, 208, 208)
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(211, Short.MAX_VALUE))
+        );
+
+        mainView.addTab("Report", report);
 
         getContentPane().add(mainView, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 100, 820, 550));
 
