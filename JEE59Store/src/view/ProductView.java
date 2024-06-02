@@ -4,17 +4,70 @@
  */
 package view;
 
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import util.DbUtil;
+
 /**
  *
  * @author User
  */
 public class ProductView extends javax.swing.JFrame {
 
+    DbUtil db = new DbUtil();
+
     /**
      * Creates new form ProductView
      */
     public ProductView() {
         initComponents();
+    }
+
+    public void addProduct(){
+        String sql = "insert into product(name,unitPrice,quantity,totalPrice,salesPrice) values(?,?,?,?,?)";
+        PreparedStatement ps;
+        try {
+            ps = db.getCon().prepareStatement(sql);
+            ps.setString(1, txtName.getText().trim());
+            ps.setFloat(2, Float.parseFloat(txtUnitPrice.getText().trim()));
+            ps.setFloat(3, Float.parseFloat(txtQuantity.getText().trim()));
+            ps.setFloat(4, Float.parseFloat(txtTotalPrice.getText().trim()));
+            ps.setFloat(5, Float.parseFloat(txtSalesPrice.getText().trim()));
+            
+            ps.executeUpdate();
+            ps.close();
+            db.getCon().close();
+            
+            JOptionPane.showMessageDialog(this, "Add product successfully");
+            clear();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(this, "Add product unsuccessfully");
+            Logger.getLogger(ProductView.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            JOptionPane.showMessageDialog(this, "Add product unsuccessfully");
+            Logger.getLogger(ProductView.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void getTotalPrice(){
+        float unitPrice = Float.parseFloat(txtUnitPrice.getText().trim());
+        float quantity = Float.parseFloat(txtQuantity.getText().trim());
+        
+        float totalPrice = unitPrice*quantity;
+        txtTotalPrice.setText(totalPrice+"");
+    }
+    
+    public void clear(){
+        txtID.setText("");
+        txtName.setText("");
+        txtUnitPrice.setText("");
+        txtQuantity.setText("");
+        txtTotalPrice.setText("");
+        txtSalesPrice.setText("");
+        
     }
 
     /**
@@ -26,6 +79,8 @@ public class ProductView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
@@ -34,6 +89,10 @@ public class ProductView extends javax.swing.JFrame {
         btnStock = new javax.swing.JButton();
         btnReport = new javax.swing.JButton();
         mainView = new javax.swing.JTabbedPane();
+        stock = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        report = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
         add = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -48,19 +107,27 @@ public class ProductView extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         txtQuantity = new javax.swing.JTextField();
         txtTotalPrice = new javax.swing.JTextField();
-        txySalesPrice = new javax.swing.JTextField();
+        txtSalesPrice = new javax.swing.JTextField();
         btnProductAdd = new javax.swing.JButton();
         btnProductDelete = new javax.swing.JButton();
         btnProductEdit = new javax.swing.JButton();
         btnProductReset = new javax.swing.JButton();
-        sales = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        stock = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
-        report = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(1000, 800));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(102, 102, 102));
@@ -115,8 +182,52 @@ public class ProductView extends javax.swing.JFrame {
         });
         jPanel2.add(btnReport, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 180, 40));
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 180, 520));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 180, 670));
 
+        jLabel4.setText("Stock");
+
+        javax.swing.GroupLayout stockLayout = new javax.swing.GroupLayout(stock);
+        stock.setLayout(stockLayout);
+        stockLayout.setHorizontalGroup(
+            stockLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(stockLayout.createSequentialGroup()
+                .addGap(308, 308, 308)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(234, Short.MAX_VALUE))
+        );
+        stockLayout.setVerticalGroup(
+            stockLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(stockLayout.createSequentialGroup()
+                .addGap(202, 202, 202)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(180, Short.MAX_VALUE))
+        );
+
+        mainView.addTab("Stock", stock);
+
+        jLabel5.setText("Report");
+
+        javax.swing.GroupLayout reportLayout = new javax.swing.GroupLayout(report);
+        report.setLayout(reportLayout);
+        reportLayout.setHorizontalGroup(
+            reportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(reportLayout.createSequentialGroup()
+                .addGap(266, 266, 266)
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(416, Short.MAX_VALUE))
+        );
+        reportLayout.setVerticalGroup(
+            reportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(reportLayout.createSequentialGroup()
+                .addGap(208, 208, 208)
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(211, Short.MAX_VALUE))
+        );
+
+        mainView.addTab("Report", report);
+
+        add.setMinimumSize(new java.awt.Dimension(820, 550));
+        add.setPreferredSize(new java.awt.Dimension(820, 550));
         add.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel3.setBackground(new java.awt.Color(204, 204, 204));
@@ -175,6 +286,11 @@ public class ProductView extends javax.swing.JFrame {
         });
         add.add(txtQuantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 300, 220, 40));
 
+        txtTotalPrice.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtTotalPriceFocusLost(evt);
+            }
+        });
         txtTotalPrice.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtTotalPriceActionPerformed(evt);
@@ -182,16 +298,21 @@ public class ProductView extends javax.swing.JFrame {
         });
         add.add(txtTotalPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 360, 220, 40));
 
-        txySalesPrice.addActionListener(new java.awt.event.ActionListener() {
+        txtSalesPrice.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txySalesPriceActionPerformed(evt);
+                txtSalesPriceActionPerformed(evt);
             }
         });
-        add.add(txySalesPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 420, 220, 40));
+        add.add(txtSalesPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 420, 220, 40));
 
         btnProductAdd.setBackground(new java.awt.Color(204, 204, 204));
         btnProductAdd.setFont(new java.awt.Font("SimSun", 1, 14)); // NOI18N
         btnProductAdd.setText("Add");
+        btnProductAdd.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnProductAddMouseClicked(evt);
+            }
+        });
         btnProductAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnProductAddActionPerformed(evt);
@@ -217,72 +338,14 @@ public class ProductView extends javax.swing.JFrame {
         btnProductReset.setBackground(new java.awt.Color(204, 204, 204));
         btnProductReset.setFont(new java.awt.Font("SimSun", 1, 14)); // NOI18N
         btnProductReset.setText("Reset");
+        btnProductReset.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnProductResetMouseClicked(evt);
+            }
+        });
         add.add(btnProductReset, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 200, 100, 30));
 
         mainView.addTab("Add", add);
-
-        jLabel3.setText("Sales");
-
-        javax.swing.GroupLayout salesLayout = new javax.swing.GroupLayout(sales);
-        sales.setLayout(salesLayout);
-        salesLayout.setHorizontalGroup(
-            salesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(salesLayout.createSequentialGroup()
-                .addGap(327, 327, 327)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(275, Short.MAX_VALUE))
-        );
-        salesLayout.setVerticalGroup(
-            salesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(salesLayout.createSequentialGroup()
-                .addGap(183, 183, 183)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(221, Short.MAX_VALUE))
-        );
-
-        mainView.addTab("Sales", sales);
-
-        jLabel4.setText("Stock");
-
-        javax.swing.GroupLayout stockLayout = new javax.swing.GroupLayout(stock);
-        stock.setLayout(stockLayout);
-        stockLayout.setHorizontalGroup(
-            stockLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(stockLayout.createSequentialGroup()
-                .addGap(308, 308, 308)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(234, Short.MAX_VALUE))
-        );
-        stockLayout.setVerticalGroup(
-            stockLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(stockLayout.createSequentialGroup()
-                .addGap(202, 202, 202)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(180, Short.MAX_VALUE))
-        );
-
-        mainView.addTab("Stock", stock);
-
-        jLabel5.setText("Report");
-
-        javax.swing.GroupLayout reportLayout = new javax.swing.GroupLayout(report);
-        report.setLayout(reportLayout);
-        reportLayout.setHorizontalGroup(
-            reportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(reportLayout.createSequentialGroup()
-                .addGap(266, 266, 266)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(416, Short.MAX_VALUE))
-        );
-        reportLayout.setVerticalGroup(
-            reportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(reportLayout.createSequentialGroup()
-                .addGap(208, 208, 208)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(211, Short.MAX_VALUE))
-        );
-
-        mainView.addTab("Report", report);
 
         getContentPane().add(mainView, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 100, 820, 550));
 
@@ -298,6 +361,45 @@ public class ProductView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnReportActionPerformed
 
+    private void btnSalesProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalesProductActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSalesProductActionPerformed
+
+    private void btnProductResetMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProductResetMouseClicked
+        // TODO add your handling code here:
+        clear();
+    }//GEN-LAST:event_btnProductResetMouseClicked
+
+    private void btnProductEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProductEditActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnProductEditActionPerformed
+
+    private void btnProductAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProductAddActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnProductAddActionPerformed
+
+    private void btnProductAddMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProductAddMouseClicked
+        // TODO add your handling code here:
+        addProduct();
+    }//GEN-LAST:event_btnProductAddMouseClicked
+
+    private void txtSalesPriceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSalesPriceActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSalesPriceActionPerformed
+
+    private void txtTotalPriceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTotalPriceActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTotalPriceActionPerformed
+
+    private void txtTotalPriceFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtTotalPriceFocusLost
+        // TODO add your handling code here:
+        getTotalPrice();
+    }//GEN-LAST:event_txtTotalPriceFocusLost
+
+    private void txtQuantityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtQuantityActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtQuantityActionPerformed
+
     private void txtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNameActionPerformed
@@ -305,30 +407,6 @@ public class ProductView extends javax.swing.JFrame {
     private void txtIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIDActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtIDActionPerformed
-
-    private void txtQuantityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtQuantityActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtQuantityActionPerformed
-
-    private void txtTotalPriceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTotalPriceActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtTotalPriceActionPerformed
-
-    private void btnProductAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProductAddActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnProductAddActionPerformed
-
-    private void btnProductEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProductEditActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnProductEditActionPerformed
-
-    private void txySalesPriceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txySalesPriceActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txySalesPriceActionPerformed
-
-    private void btnSalesProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalesProductActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnSalesProductActionPerformed
 
     /**
      * @param args the command line arguments
@@ -379,7 +457,6 @@ public class ProductView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -389,15 +466,16 @@ public class ProductView extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     private javax.swing.JTabbedPane mainView;
     private javax.swing.JPanel report;
-    private javax.swing.JPanel sales;
     private javax.swing.JPanel stock;
     private javax.swing.JTextField txtID;
     private javax.swing.JTextField txtName;
     private javax.swing.JTextField txtQuantity;
+    private javax.swing.JTextField txtSalesPrice;
     private javax.swing.JTextField txtTotalPrice;
     private javax.swing.JTextField txtUnitPrice;
-    private javax.swing.JTextField txySalesPrice;
     // End of variables declaration//GEN-END:variables
 }
